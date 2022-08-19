@@ -8,7 +8,6 @@ class Solution:
     def countGoodTriplets(self, arr: List[int], a: int, b: int, c: int) -> int:
         l = 0
         r = len(arr) - 1
-        minimum = min(a, b, c)
         triplets_indices = []
 
         while l <= len(arr) - 3:
