@@ -8,10 +8,8 @@ class Solution:
     def maxCoins(self, piles: List[int]) -> int:
         piles.sort()
         r = len(piles) - 2
-        l = 0
         total = 0
-        while r > l:
+        while r >= len(piles)//3:
             total += piles[r]
             r -= 2
-            l += 1
         return total
