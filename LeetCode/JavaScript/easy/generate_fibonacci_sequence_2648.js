@@ -9,7 +9,7 @@
  */
 var fibGenerator = function*() {
     let prev = 0;
-    let current = 1
+    let current = 1;
     yield 0;
     yield 1;
 
