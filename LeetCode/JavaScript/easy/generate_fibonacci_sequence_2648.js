@@ -3,6 +3,7 @@
 * https://leetcode.com/problems/generate-fibonacci-sequence/
 */
 
+
 /**
  * @return {Generator<number>}
  */
@@ -13,7 +14,7 @@ var fibGenerator = function*() {
     yield 1;
 
     while (true) {
-        temp = current;
+        let temp = current;
         current = prev + current;
         prev = temp;
         yield current;
