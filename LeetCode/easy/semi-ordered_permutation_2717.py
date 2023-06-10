@@ -6,16 +6,9 @@ https://leetcode.com/problems/semi-ordered-permutation/
 
 class Solution:
     def semiOrderedPermutation(self, nums: List[int]) -> int:
-        counter = 0
-        while nums[0] != 1 or nums[-1] != len(nums):
-            if nums[0] != 1:
-                i = nums.index(1)
-                nums[i], nums[i - 1] = nums[i - 1], nums[i]
-                counter += 1
-
-            if nums[-1] != len(nums):
-                i = nums.index(len(nums))
-                nums[i], nums[i + 1] = nums[i + 1], nums[i]
-                counter += 1
-
-        return counter
+        dist_l = nums.index(1)
+        dist_r = len(nums) - 1 - nums.index(len(nums))
+        if dist_l <= nums.index(len(nums)):
+            return dist_l + dist_r
+        else:
+            return dist_l + dist_r - 1
