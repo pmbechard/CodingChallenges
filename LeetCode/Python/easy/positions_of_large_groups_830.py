@@ -1,9 +1,3 @@
-"""
-830. Positions of Large Groups
-https://leetcode.com/problems/positions-of-large-groups/
-"""
-
-
 class Solution:
     def largeGroupPositions(self, s: str) -> List[List[int]]:
         # if len(s) < 3:
@@ -31,7 +25,6 @@ class Solution:
         groups = []
         i = 0
         while i < len_s - 2:
-            current = s[i]
             j = i + 1
             while j < len_s and s[j] == s[i]:
                 j += 1
