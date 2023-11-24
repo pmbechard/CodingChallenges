@@ -6,17 +6,16 @@ https://leetcode.com/problems/count-binary-substrings/
 
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
-        count = 0
-        digit = None
-        output = 0
-        for i in range(len(s)):
-            if s[i] == digit:
-                count += 1
+        prev_count = curr_count = output = 0
+        curr_digit = ''
+
+        for digit in s:
+            if digit == curr_digit:
+                curr_count += 1
             else:
-                digit = s[i]
-                count = 1
-            for j in range(i + 1, min(len(s), i + count + 1)):
-                if s[j] == digit:
-                    break
+                prev_count = curr_count
+                curr_count = 1
+                curr_digit = digit
+            if curr_count <= prev_count:
                 output += 1
         return output
