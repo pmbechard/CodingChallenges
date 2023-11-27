@@ -1,9 +1,3 @@
-"""
-935. Knight Dialer
-https://leetcode.com/problems/knight-dialer/
-"""
-
-
 class Solution:
     num_map = {
         1: [6, 8],
@@ -22,16 +16,16 @@ class Solution:
     def knightDialer(self, n: int) -> int:
         output = 0
         for num in self.num_map:
-            output += self.traverse(num, n, n)
+            output += self.traverse(num, n)
         return output % (10 ** 9 + 7)
 
-    def traverse(self, node, count, target):
+    def traverse(self, node, count):
         if count == 1:
             return 1
         elif self.mem.get((node, count)) != None:
             return self.mem[(node, count)]
         output = 0
         for val in self.num_map[node]:
-            output += self.traverse(val, count - 1, target)
+            output += self.traverse(val, count - 1)
         self.mem[(node, count)] = output
         return output
