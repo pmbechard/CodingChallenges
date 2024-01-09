@@ -18,7 +18,7 @@ class Solution:
         if not node.left and not node.right:
             leaves.append(node.val)
         if node.left:
-            leaves = self.get_leaves(node.left, leaves)
+            self.get_leaves(node.left, leaves)
         if node.right:
-            leaves = self.get_leaves(node.right, leaves)
+            self.get_leaves(node.right, leaves)
         return leaves
