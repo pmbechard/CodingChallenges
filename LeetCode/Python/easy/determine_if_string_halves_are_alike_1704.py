@@ -6,9 +6,14 @@ https://leetcode.com/problems/determine-if-string-halves-are-alike
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        vowels = ['a', 'e', 'i', 'o', 'u']
+        vowels = {'a', 'e', 'i', 'o', 'u'}
         l, r = 0, 0
-        for vowel in vowels:
-            l += s.lower().count(vowel, 0, len(s)//2)
-            r += s.lower().count(vowel, len(s)//2)
-        return r == l
+        s = s.lower()
+        mid = (len(s) - 1) // 2
+        for i in range(len(s)):
+            if s[i] in vowels:
+                if i <= mid:
+                    l += 1
+                else:
+                    r += 1
+        return l == r
