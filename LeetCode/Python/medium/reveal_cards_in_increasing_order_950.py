@@ -9,6 +9,5 @@ class Solution:
         deck.sort()
         new_deck = [deck.pop()]
         while deck:
-            new_deck.insert(0, new_deck.pop())
-            new_deck.insert(0, deck.pop())
+            new_deck[0:0] = [deck.pop(), new_deck.pop()]
         return new_deck
