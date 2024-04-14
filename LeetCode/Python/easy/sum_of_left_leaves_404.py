@@ -11,14 +11,15 @@ https://leetcode.com/problems/sum-of-left-leaves/
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        return self.traverse(root, 0, False);
+    def __init__(self):
+        self.left_sum = 0
 
-    def traverse(self, node, count, isLeft):
-        if isLeft and not node.right and not node.left:
-            count += node.val
-        if node.right:
-            count = self.traverse(node.right, count, False)
-        if node.left:
-            count = self.traverse(node.left, count, True)
-        return count
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        if root.left:
+            if not root.left.left and not root.left.right:
+                self.left_sum += root.left.val
+            else:
+                self.sumOfLeftLeaves(root.left)
+        if root.right:
+            self.sumOfLeftLeaves(root.right)
+        return self.left_sum
