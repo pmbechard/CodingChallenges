@@ -15,15 +15,15 @@ class Solution:
         self.sum = 0
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        self.traverse(root, '')
+        self.traverse(root, 0)
         return self.sum
 
-    def traverse(self, node, s):
-        s += str(node.val)
+    def traverse(self, node, total):
+        total = total * 10 + node.val
         if not node.left and not node.right:
-            self.sum += int(s)
+            self.sum += total
             return
         if node.right:
-            self.traverse(node.right, s)
+            self.traverse(node.right, total)
         if node.left:
-            self.traverse(node.left, s)
+            self.traverse(node.left, total)
