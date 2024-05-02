@@ -6,7 +6,10 @@ https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-nega
 
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
-        for i in sorted(nums, reverse=True):
-            if i < 1: break
-            elif -i in nums: return i
-        return -1
+        visited = set()
+        largest = -1
+        for i in nums:
+            if -i in visited and abs(i) > largest:
+                largest = abs(i)
+            visited.add(i)
+        return largest
