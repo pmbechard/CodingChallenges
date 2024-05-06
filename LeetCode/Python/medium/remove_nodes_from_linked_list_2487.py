@@ -11,13 +11,22 @@ https://leetcode.com/problems/remove-nodes-from-linked-list/
 #         self.next = next
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        node = head
-        stack = []
-        while node:
-            while stack and stack[-1].val < node.val:
-                stack.pop()
-            stack.append(node)
-            node = node.next
-        for i in range(len(stack) - 1):
-            stack[i].next = stack[i + 1]
-        return stack[0]
+        # Edge case for single node
+        if not head.next:
+            return head
+        # O(n) - Convert to list
+        nodes = []
+        while head:
+            nodes.append(head)
+            head = head.next
+        # O(1) - Get second last index
+        prev = nodes[-1]
+        i = len(nodes) - 2
+        # O(n) - Connect increasing nodes (right to left)
+        while i >= 0:
+            if nodes[i].val >= prev.val:
+                nodes[i].next = prev
+                prev = nodes[i]
+            i -= 1
+        # Total: O(n)
+        return prev
