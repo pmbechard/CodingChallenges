@@ -3,10 +3,6 @@
 https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/
 """
 
-import sys
-
-sys.set_int_max_str_digits(0)
-
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -15,17 +11,19 @@ sys.set_int_max_str_digits(0)
 #         self.next = next
 class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        node = head
-        num = 0
+        new_head = node = head
+        prev = None
         while node:
-            num = num * 10 + node.val
+            new_val = node.val * 2
+            if new_val > 9:
+                node.val = new_val % 10
+                if prev:
+                    prev.val += 1
+                else:
+                    prev = ListNode(1, node)
+                    new_head = prev
+            else:
+                node.val = new_val
+            prev = node
             node = node.next
-        num = str(num * 2)
-
-        node = head
-        for i in range(len(num)):
-            node.val = int(num[i])
-            if not node.next and i < len(num) - 1:
-                node.next = ListNode()
-            node = node.next
-        return head
+        return new_head
