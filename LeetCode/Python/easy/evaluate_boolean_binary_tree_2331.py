@@ -12,27 +12,11 @@ https://leetcode.com/problems/evaluate-boolean-binary-tree/
 #         self.right = right
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
-        return eval(self.traverse(root))
+        return self.traverse(root)
 
     def traverse(self, node):
-        result = ''
-        if node.left:
-            val = self.traverse(node.left)
-            if val: result += val
-        result += self.convertVal(node.val)
-        if node.right:
-            val = self.traverse(node.right)
-            if val: result += val
-        if node.left and node.right:
-            return f'{eval(result)} '
-        return result
-
-    def convertVal(self, val):
-        if val == 0:
-            return 'False '
-        elif val == 1:
-            return 'True '
-        elif val == 2:
-            return 'or '
-        elif val == 3:
-            return 'and '
+        if node.val == 2:
+            return self.traverse(node.left) or self.traverse(node.right)
+        elif node.val == 3:
+            return self.traverse(node.left) and self.traverse(node.right)
+        return True if node.val == 1 else False
