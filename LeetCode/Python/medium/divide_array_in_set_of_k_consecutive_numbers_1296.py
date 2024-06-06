@@ -8,14 +8,9 @@ class Solution:
     def isPossibleDivide(self, nums: List[int], k: int) -> bool:
         nums.sort()
         while nums:
-            if not self.remove_seq(nums, k):
-                return False
-        return True
-
-    def remove_seq(self, nums, k):
-        for num in range(nums[0], nums[0] + k):
-            try:
-                nums.remove(num)
-            except ValueError:
-                return False
+            for num in range(nums[0], nums[0] + k):
+                try:
+                    nums.remove(num)
+                except ValueError:
+                    return False
         return True
