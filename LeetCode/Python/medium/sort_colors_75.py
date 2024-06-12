@@ -24,5 +24,4 @@ class Solution:
                 high -= 1
             else:
                 current += 1
-            print(nums)
         return nums
