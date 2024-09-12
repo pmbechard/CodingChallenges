@@ -6,11 +6,9 @@ https://leetcode.com/problems/count-the-number-of-consistent-strings/
 
 class Solution:
     def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
-        result = 0
-        allowed_list = list(allowed)
-        for word in words:
-            for allowed in allowed_list:
-                word = word.replace(allowed, '')
-            if not word:
-                result += 1
-        return result
+        allowed = set(allowed)
+        ctr = 0
+        for s in words:
+            if not set(s).difference(allowed):
+                ctr += 1
+        return ctr
