@@ -8,8 +8,9 @@ class Solution:
     def makeFancyString(self, s: str) -> str:
         if len(s) < 3:
             return s
-        result = s[:2]
-        for i in range(2, len(s)):
-            if not (result[-1] == result[-2] == s[i]):
-                result += s[i]
-        return result
+        stack = s[:2]
+        for c in s[2:]:
+            if c == stack[-1] == stack[-2]:
+                continue
+            stack += c
+        return stack
