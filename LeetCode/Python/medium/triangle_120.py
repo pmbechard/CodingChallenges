@@ -14,3 +14,4 @@ class Solution:
                 triangle[row][col] += left if right == None else min(left, right)
         return triangle[0][0]
 
+''.st
