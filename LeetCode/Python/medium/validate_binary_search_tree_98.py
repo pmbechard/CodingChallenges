@@ -29,3 +29,5 @@ class Solution:
         self.nums.append(node.val)
         if node.right:
             self.traverse(node.right)
+
+            ''.find()
