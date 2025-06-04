@@ -17,7 +17,7 @@ class Solution:
         idx = None
         for i in range(len(nums) - 1):
             curr = nums[i] + nums[i + 1]
-            if min_sum == None or curr < min_sum:
+            if min_sum is None or curr < min_sum:
                 min_sum = curr
                 idx = i
         return nums[:idx] + [min_sum] + nums[idx + 2:]
@@ -25,7 +25,7 @@ class Solution:
     def is_sorted(self, nums: List[int]) -> bool:
         prev = None
         for num in nums:
-            if prev == None or prev <= num:
+            if prev is None or prev <= num:
                 prev = num
             else:
                 return False
